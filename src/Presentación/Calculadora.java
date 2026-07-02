@@ -168,7 +168,7 @@ public class Calculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {
-            String opcion = cmbOperacion.getSelectedItem().toString();
+        String opcion = cmbOperacion.getSelectedItem().toString();
         txtVoltaje.setText("");
         txtCorriente.setText("");
         txtResistencia.setText("");
