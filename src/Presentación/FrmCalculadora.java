@@ -5,6 +5,7 @@
 package Presentación;
 
 import Logica.Calculadora;
+import Logica.Validaciones;
 import javax.swing.JOptionPane;
 
 /**
@@ -55,11 +56,26 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
         txtVoltaje.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtVoltaje.addActionListener(this::txtVoltajeActionPerformed);
+        txtVoltaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtVoltajeKeyTyped(evt);
+            }
+        });
 
         txtResistencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtResistencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtResistenciaKeyTyped(evt);
+            }
+        });
 
         txtCorriente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCorriente.addActionListener(this::txtCorrienteActionPerformed);
+        txtCorriente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorrienteKeyTyped(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("CALCULADORA LEY DE OHM");
@@ -85,6 +101,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(this::btnSalirActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,7 +219,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
             String opcion = cmbOperacion.getSelectedItem().toString();
             double v, i, r, resultado;
 
-            if (opcion.equals("Calcular Voltaje")) {
+            if (opcion.equals("Voltaje")) {
 
                 i = Double.parseDouble(txtCorriente.getText());
                 r = Double.parseDouble(txtResistencia.getText());
@@ -212,7 +229,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 resultado = calculadora.calcularVoltaje(i, r);
                 txtVoltaje.setText(String.format("%.2f", resultado));
 
-            } else if (opcion.equals("Calcular Corriente")) {
+            } else if (opcion.equals("Corriente")) {
 
                 v = Double.parseDouble(txtVoltaje.getText());
                 r = Double.parseDouble(txtResistencia.getText());
@@ -222,7 +239,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 resultado = calculadora.calcularCorriente(v, r);
                 txtCorriente.setText(String.format("%.2f", resultado));
 
-            } else if (opcion.equals("Calcular Resistencia")) {
+            } else if (opcion.equals("Resistencia")) {
 
                 v = Double.parseDouble(txtVoltaje.getText());
                 i = Double.parseDouble(txtCorriente.getText());
@@ -248,6 +265,40 @@ public class FrmCalculadora extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void txtVoltajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVoltajeKeyTyped
+        if (!Validaciones.esNumero(evt)) {
+            evt.consume();
+        } else {
+            if (txtVoltaje.getText().length() == 10) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_txtVoltajeKeyTyped
+
+    private void txtCorrienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorrienteKeyTyped
+        if (!Validaciones.esNumero(evt)) {
+            evt.consume();
+        } else {
+            if (txtCorriente.getText().length() == 10) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_txtCorrienteKeyTyped
+
+    private void txtResistenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtResistenciaKeyTyped
+        if (!Validaciones.esNumero(evt)) {
+            evt.consume();
+        } else {
+            if (txtResistencia.getText().length() == 10) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_txtResistenciaKeyTyped
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void validar(double a, double b) {
         if (a <= 0 || b <= 0) {
