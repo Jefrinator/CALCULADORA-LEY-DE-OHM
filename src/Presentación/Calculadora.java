@@ -18,10 +18,7 @@ public class Calculadora extends javax.swing.JFrame {
     public Calculadora() {
         initComponents();
         
-        cmbOperacion.removeAllItems();
-        cmbOperacion.addItem("Voltaje");
-        cmbOperacion.addItem("Corriente");
-        cmbOperacion.addItem("Resistencia");
+        
         
     }
 
