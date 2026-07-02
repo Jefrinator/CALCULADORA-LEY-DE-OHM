@@ -22,27 +22,38 @@ public class FrmCalculadora extends javax.swing.JFrame {
     public FrmCalculadora() {
         initComponents();
         setLocationRelativeTo(null);
+        cargarCalculos();
 
         String opcion = cmbOperacion.getSelectedItem().toString();
 
-        if (opcion.equals("Voltaje")) {
+        if (opcion.equals("Calcular Voltaje")) {
 
             txtVoltaje.setEnabled(false);
             txtVoltaje.setBackground(Color.LIGHT_GRAY);
             txtCorriente.requestFocus();
 
-        } else if (opcion.equals("Corriente")) {
+        } else if (opcion.equals("Calcular Corriente")) {
 
             txtCorriente.setEnabled(false);
             txtCorriente.setBackground(Color.LIGHT_GRAY);
             txtVoltaje.requestFocus();
 
-        } else if (opcion.equals("Resistencia")) {
+        } else if (opcion.equals("Calcular Resistencia")) {
 
             txtResistencia.setEnabled(false);
             txtResistencia.setBackground(Color.LIGHT_GRAY);
             txtVoltaje.requestFocus();
         }
+    }
+
+    public void cargarCalculos() {
+        this.cmbOperacion.removeAllItems();
+        this.cmbOperacion.addItem("Seleccione una opcion");
+        this.cmbOperacion.addItem("Calcular Voltaje");
+        this.cmbOperacion.addItem("Calcular Corriente");
+        this.cmbOperacion.addItem("Calcular Resistencia");
+
+        cmbOperacion.setSelectedIndex(0);
     }
 
     /**
@@ -61,11 +72,11 @@ public class FrmCalculadora extends javax.swing.JFrame {
         txtCorriente = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
         lblCombo = new javax.swing.JLabel();
-        cmbOperacion = new javax.swing.JComboBox<>();
         btnCalcular = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         lblVoltaje = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        cmbOperacion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,12 +116,6 @@ public class FrmCalculadora extends javax.swing.JFrame {
         lblCombo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCombo.setText("Variable  a Calcular:");
 
-        cmbOperacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar una opcion", "Voltaje", "Corriente", "Resistencia" }));
-        cmbOperacion.setToolTipText("");
-        cmbOperacion.addItemListener(this::cmbOperacionItemStateChanged);
-        cmbOperacion.addActionListener(this::cmbOperacionActionPerformed);
-
         btnCalcular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCalcular.setText("Calcular");
         btnCalcular.addActionListener(this::btnCalcularActionPerformed);
@@ -126,6 +131,10 @@ public class FrmCalculadora extends javax.swing.JFrame {
         btnSalir.setText("Salir");
         btnSalir.addActionListener(this::btnSalirActionPerformed);
 
+        cmbOperacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbOperacion.addActionListener(this::cmbOperacionActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,33 +144,37 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(lblTitulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCombo)
+                                    .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(138, 138, 138))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCorriente)
                             .addComponent(lblResistencia))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVoltaje, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtResistencia, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtCorriente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(lblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCombo)
-                            .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(138, 138, 138))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtVoltaje, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtResistencia, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtCorriente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(185, 185, 185))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,8 +184,8 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(lblCombo)
                 .addGap(18, 18, 18)
-                .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,42 +217,13 @@ public class FrmCalculadora extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorrienteActionPerformed
 
-    private void cmbOperacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbOperacionItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbOperacionItemStateChanged
-
-    private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOperacionActionPerformed
-        String opcion = cmbOperacion.getSelectedItem().toString();
-        txtVoltaje.setText("");
-        txtCorriente.setText("");
-        txtResistencia.setText("");
-
-        txtVoltaje.setEnabled(true);
-        txtCorriente.setEnabled(true);
-        txtResistencia.setEnabled(true);
-
-        switch (opcion) {
-            case "Voltaje":
-                txtVoltaje.setEnabled(false);
-                break;
-
-            case "Corriente":
-                txtCorriente.setEnabled(false);
-                break;
-
-            case "Resistencia":
-                txtResistencia.setEnabled(false);
-                break;
-        }
-    }//GEN-LAST:event_cmbOperacionActionPerformed
-
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         try {
 
             String opcion = cmbOperacion.getSelectedItem().toString();
             double v, i, r, resultado;
 
-            if (opcion.equals("Voltaje")) {
+            if (opcion.equals("Calcular Voltaje")) {
 
                 i = Double.parseDouble(txtCorriente.getText());
                 r = Double.parseDouble(txtResistencia.getText());
@@ -252,7 +236,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 txtVoltaje.setBackground(Color.YELLOW);
                 txtVoltaje.setText(String.format("%.2f", resultado));
 
-            } else if (opcion.equals("Corriente")) {
+            } else if (opcion.equals("Calcular Corriente")) {
 
                 v = Double.parseDouble(txtVoltaje.getText());
                 r = Double.parseDouble(txtResistencia.getText());
@@ -265,7 +249,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 txtCorriente.setBackground(Color.YELLOW);
                 txtCorriente.setText(String.format("%.2f", resultado));
 
-            } else if (opcion.equals("Resistencia")) {
+            } else if (opcion.equals("Calcular Resistencia")) {
 
                 v = Double.parseDouble(txtVoltaje.getText());
                 i = Double.parseDouble(txtCorriente.getText());
@@ -277,11 +261,11 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 txtResistencia.setEditable(false);
                 txtResistencia.setBackground(Color.YELLOW);
                 txtResistencia.setText(String.format("%.2f", resultado));
-            
-            } else if (txtVoltaje.getText().trim().equals("") || 
-                    txtCorriente.getText().trim().equals("") || 
-                    txtResistencia.getText().trim().equals("")) {
-                
+
+            } else if (txtVoltaje.getText().trim().equals("")
+                    || txtCorriente.getText().trim().equals("")
+                    || txtResistencia.getText().trim().equals("")) {
+
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor en los campos correspondientes");
             }
 
@@ -302,7 +286,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void txtVoltajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVoltajeKeyTyped
-        if (!Validaciones.esNumero(evt)) {
+        if (!Validaciones.esNumero(evt, txtVoltaje)) {
             evt.consume();
         } else {
             if (txtVoltaje.getText().length() == 10) {
@@ -312,7 +296,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVoltajeKeyTyped
 
     private void txtCorrienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorrienteKeyTyped
-        if (!Validaciones.esNumero(evt)) {
+        if (!Validaciones.esNumero(evt, txtCorriente)) {
             evt.consume();
         } else {
             if (txtCorriente.getText().length() == 10) {
@@ -322,7 +306,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorrienteKeyTyped
 
     private void txtResistenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtResistenciaKeyTyped
-        if (!Validaciones.esNumero(evt)) {
+        if (!Validaciones.esNumero(evt, txtResistencia)) {
             evt.consume();
         } else {
             if (txtResistencia.getText().length() == 10) {
@@ -344,6 +328,39 @@ public class FrmCalculadora extends javax.swing.JFrame {
         this.txtResistencia.setBackground(Color.WHITE);
         this.cmbOperacion.setSelectedIndex(0);
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOperacionActionPerformed
+        
+        Object item = cmbOperacion.getSelectedItem(); // Devuelve el elemento que esta seleccionado actulamente en el JComboBox
+
+        if (item == null) { //En caso de dar nulo y salte la Exception Null Pointer
+            return; //Salirse del metodo
+        }
+
+        String opcion = item.toString();
+        //-----------------------
+        txtVoltaje.setText("");
+        txtCorriente.setText("");
+        txtResistencia.setText("");
+
+        txtVoltaje.setEnabled(true);
+        txtCorriente.setEnabled(true);
+        txtResistencia.setEnabled(true);
+
+        switch (opcion) {
+            case "Calcular Voltaje":
+                txtVoltaje.setEnabled(false);
+                break;
+
+            case "Calcular Corriente":
+                txtCorriente.setEnabled(false);
+                break;
+
+            case "Calcular Resistencia":
+                txtResistencia.setEnabled(false);
+                break;
+        }
+    }//GEN-LAST:event_cmbOperacionActionPerformed
 
     private void validar(double a, double b) {
         if (a <= 0 || b <= 0) {
