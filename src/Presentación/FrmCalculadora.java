@@ -238,7 +238,9 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
             String opcion = cmbOperacion.getSelectedItem().toString();
             double v, i, r, resultado;
-
+            
+            
+           
             if (opcion.equals("Voltaje")) {
 
                 i = Double.parseDouble(txtCorriente.getText());
@@ -277,6 +279,8 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 txtResistencia.setEditable(false);
                 txtResistencia.setBackground(Color.YELLOW);
                 txtResistencia.setText(String.format("%.2f", resultado));
+            }else if(txtVoltaje.getText().trim().equals("") || txtCorriente.getText().trim().equals("") || txtResistencia.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Debe ingresar un valor en los campos correspondientes");
             }
 
         } catch (NumberFormatException e) {
