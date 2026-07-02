@@ -18,6 +18,11 @@ public class Calculadora extends javax.swing.JFrame {
     public Calculadora() {
         initComponents();
         
+        cmbOperacion.removeAllItems();
+        cmbOperacion.addItem("Voltaje");
+        cmbOperacion.addItem("Corriente");
+        cmbOperacion.addItem("Resistencia");
+        
     }
 
     /**
@@ -76,6 +81,7 @@ public class Calculadora extends javax.swing.JFrame {
 
         btnCalcular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(this::btnCalcularActionPerformed);
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -164,6 +170,10 @@ public class Calculadora extends javax.swing.JFrame {
     private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOperacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbOperacionActionPerformed
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
     /**
      * @param args the command line arguments
