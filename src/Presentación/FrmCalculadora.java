@@ -6,6 +6,7 @@ package Presentación;
 
 import Logica.Calculadora;
 import Logica.Validaciones;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,27 @@ public class FrmCalculadora extends javax.swing.JFrame {
     public FrmCalculadora() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        String opcion = cmbOperacion.getSelectedItem().toString();
+        
+        if (opcion.equals("Voltaje")) {
+
+            txtVoltaje.setEnabled(false);
+            txtVoltaje.setBackground(Color.LIGHT_GRAY);
+            txtCorriente.requestFocus();
+
+        } else if (opcion.equals("Corriente")) {
+
+            txtCorriente.setEnabled(false);
+            txtCorriente.setBackground(Color.LIGHT_GRAY);
+            txtVoltaje.requestFocus();
+
+        } else if (opcion.equals("Resistencia")) {
+
+            txtResistencia.setEnabled(false);
+            txtResistencia.setBackground(Color.LIGHT_GRAY);
+            txtVoltaje.requestFocus();
+        }
     }
 
     /**
@@ -95,6 +117,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(this::btnLimpiarActionPerformed);
 
         lblVoltaje.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblVoltaje.setText("Voltaje (V)");
@@ -131,16 +154,13 @@ public class FrmCalculadora extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCombo)
-                                    .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblCombo)
+                            .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
@@ -227,6 +247,9 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 validar(i, r);
 
                 resultado = calculadora.calcularVoltaje(i, r);
+                txtVoltaje.setEnabled(true);
+                txtVoltaje.setEditable(false);
+                txtVoltaje.setBackground(Color.YELLOW);
                 txtVoltaje.setText(String.format("%.2f", resultado));
 
             } else if (opcion.equals("Corriente")) {
@@ -237,6 +260,9 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 validar(v, r);
 
                 resultado = calculadora.calcularCorriente(v, r);
+                txtCorriente.setEnabled(true);
+                txtCorriente.setEditable(false);
+                txtCorriente.setBackground(Color.YELLOW);
                 txtCorriente.setText(String.format("%.2f", resultado));
 
             } else if (opcion.equals("Resistencia")) {
@@ -247,6 +273,9 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 validar(v, i);
 
                 resultado = calculadora.calcularResistencia(v, i);
+                txtResistencia.setEnabled(true);
+                txtResistencia.setEditable(false);
+                txtResistencia.setBackground(Color.YELLOW);
                 txtResistencia.setText(String.format("%.2f", resultado));
             }
 
@@ -299,6 +328,16 @@ public class FrmCalculadora extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        this.txtVoltaje.setText("");
+        this.txtVoltaje.setBackground(Color.WHITE);
+        this.txtCorriente.setText("");
+        this.txtCorriente.setBackground(Color.WHITE);
+        this.txtResistencia.setText("");
+        this.txtResistencia.setBackground(Color.WHITE);
+        this.cmbOperacion.setSelectedIndex(0);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void validar(double a, double b) {
         if (a <= 0 || b <= 0) {
