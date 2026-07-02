@@ -4,6 +4,9 @@
  */
 package Presentación;
 
+import Logica.Calculadora;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jeff
@@ -11,12 +14,12 @@ package Presentación;
 public class FrmCalculadora extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCalculadora.class.getName());
-
-    /**
-     * Creates new form Calculadora
-     */
+    
+    Calculadora calculadora = new Calculadora();
+    
     public FrmCalculadora() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -72,6 +75,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
         btnCalcular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(this::btnCalcularActionPerformed);
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -87,44 +91,40 @@ public class FrmCalculadora extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCorriente)
-                    .addComponent(lblResistencia))
-                .addGap(25, 25, 25)
+                .addGap(133, 133, 133)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVoltaje, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .addComponent(txtResistencia))
-                        .addGap(80, 80, 80)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))
+                            .addComponent(lblCorriente)
+                            .addComponent(lblResistencia))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtVoltaje, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtResistencia, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCorriente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtCorriente, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
+                        .addGap(79, 79, 79)
                         .addComponent(lblTitulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
+                        .addGap(21, 21, 21)
                         .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCombo)
-                            .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCombo)
+                                    .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(93, 93, 93)
+                                .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,6 +195,67 @@ public class FrmCalculadora extends javax.swing.JFrame {
             break;
         }
     }//GEN-LAST:event_cmbOperacionActionPerformed
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        try {
+
+            String opcion = cmbOperacion.getSelectedItem().toString();
+            double v, i, r, resultado;
+
+            if (opcion.equals("Calcular Voltaje")) {
+
+                i = Double.parseDouble(txtCorriente.getText());
+                r = Double.parseDouble(txtResistencia.getText());
+
+                validar(i, r);
+
+                resultado = calculadora.calcularVoltaje(i, r);
+                txtVoltaje.setText(String.format("%.2f", resultado));
+
+            } else if (opcion.equals("Calcular Corriente")) {
+
+                v = Double.parseDouble(txtVoltaje.getText());
+                r = Double.parseDouble(txtResistencia.getText());
+
+                validar(v, r);
+
+                resultado = calculadora.calcularCorriente(v, r);
+                txtCorriente.setText(String.format("%.2f", resultado));
+
+            } else if (opcion.equals("Calcular Resistencia")) {
+
+                v = Double.parseDouble(txtVoltaje.getText());
+                i = Double.parseDouble(txtCorriente.getText());
+
+                validar(v, i);
+
+                resultado = calculadora.calcularResistencia(v, i);
+                txtResistencia.setText(String.format("%.2f", resultado));
+            }
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Ingresa solo números válidos ",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+
+        } catch (ArithmeticException e) {
+
+            JOptionPane.showMessageDialog(this,
+                    "División entre cero detectada ",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void validar(double a, double b) {
+        if (a <= 0 || b <= 0) {
+            JOptionPane.showMessageDialog(this,
+                    "Los valores deben ser mayores que cero ");
+            throw new ArithmeticException();
+        }
+    }                                           
 
     /**
      * @param args the command line arguments
