@@ -164,9 +164,30 @@ public class Calculadora extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOperacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbOperacionActionPerformed
+    private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {
+        String opcion = cmbOperacion.getSelectedItem().toString();
+        txtVoltaje.setText("");
+        txtCorriente.setText("");
+        txtResistencia.setText("");
+            
+        txtVoltaje.setEnabled(true);
+        txtCorriente.setEnabled(true);
+        txtResistencia.setEnabled(true);
+        
+    switch(opcion){ 
+        case "Voltaje":
+            txtVoltaje.setEnabled(false);
+            break;
+
+        case "Corriente":
+            txtCorriente.setEnabled(false);
+            break;
+
+        case "Resistencia":
+            txtResistencia.setEnabled(false);
+            break;      
+    } 
+    }
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         
