@@ -14,17 +14,17 @@ import javax.swing.JOptionPane;
  * @author Jeff
  */
 public class FrmCalculadora extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCalculadora.class.getName());
-    
+
     Calculadora calculadora = new Calculadora();
-    
+
     public FrmCalculadora() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         String opcion = cmbOperacion.getSelectedItem().toString();
-        
+
         if (opcion.equals("Voltaje")) {
 
             txtVoltaje.setEnabled(false);
@@ -218,18 +218,18 @@ public class FrmCalculadora extends javax.swing.JFrame {
         txtCorriente.setEnabled(true);
         txtResistencia.setEnabled(true);
 
-        switch(opcion){
+        switch (opcion) {
             case "Voltaje":
-            txtVoltaje.setEnabled(false);
-            break;
+                txtVoltaje.setEnabled(false);
+                break;
 
             case "Corriente":
-            txtCorriente.setEnabled(false);
-            break;
+                txtCorriente.setEnabled(false);
+                break;
 
             case "Resistencia":
-            txtResistencia.setEnabled(false);
-            break;
+                txtResistencia.setEnabled(false);
+                break;
         }
     }//GEN-LAST:event_cmbOperacionActionPerformed
 
@@ -238,9 +238,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
             String opcion = cmbOperacion.getSelectedItem().toString();
             double v, i, r, resultado;
-            
-            
-           
+
             if (opcion.equals("Voltaje")) {
 
                 i = Double.parseDouble(txtCorriente.getText());
@@ -279,7 +277,11 @@ public class FrmCalculadora extends javax.swing.JFrame {
                 txtResistencia.setEditable(false);
                 txtResistencia.setBackground(Color.YELLOW);
                 txtResistencia.setText(String.format("%.2f", resultado));
-            }else if(txtVoltaje.getText().trim().equals("") || txtCorriente.getText().trim().equals("") || txtResistencia.getText().trim().equals("")){
+            
+            } else if (txtVoltaje.getText().trim().equals("") || 
+                    txtCorriente.getText().trim().equals("") || 
+                    txtResistencia.getText().trim().equals("")) {
+                
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor en los campos correspondientes");
             }
 
@@ -349,7 +351,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
                     "Los valores deben ser mayores que cero ");
             throw new ArithmeticException();
         }
-    }                                           
+    }
 
     /**
      * @param args the command line arguments
