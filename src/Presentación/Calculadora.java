@@ -17,9 +17,6 @@ public class Calculadora extends javax.swing.JFrame {
      */
     public Calculadora() {
         initComponents();
-        
-        
-        
     }
 
     /**
@@ -29,10 +26,8 @@ public class Calculadora extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
- private void initComponents() {
+    private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        lblVoltaje = new javax.swing.JLabel();
         lblResistencia = new javax.swing.JLabel();
         lblCorriente = new javax.swing.JLabel();
         txtVoltaje = new javax.swing.JTextField();
@@ -43,14 +38,10 @@ public class Calculadora extends javax.swing.JFrame {
         cmbOperacion = new javax.swing.JComboBox<>();
         btnCalcular = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        lblVoltaje = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblVoltaje.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblVoltaje.setText("Voltaje (V)");
 
         lblResistencia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblResistencia.setText("Resistencia  (Ω)");
@@ -85,6 +76,9 @@ public class Calculadora extends javax.swing.JFrame {
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
 
+        lblVoltaje.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblVoltaje.setText("Voltaje (V)");
+
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
 
@@ -101,15 +95,14 @@ public class Calculadora extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVoltaje, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(txtVoltaje, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                             .addComponent(txtResistencia))
                         .addGap(80, 80, 80)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(txtCorriente)
-                        .addContainerGap())))
+                        .addComponent(txtCorriente, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -133,9 +126,6 @@ public class Calculadora extends javax.swing.JFrame {
                         .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCalcular, btnLimpiar, btnSalir});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -149,8 +139,8 @@ public class Calculadora extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVoltaje, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCorriente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorriente, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -163,42 +153,48 @@ public class Calculadora extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCalcular, btnLimpiar, btnSalir});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {
+    private void txtVoltajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVoltajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVoltajeActionPerformed
+
+    private void txtCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorrienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorrienteActionPerformed
+
+    private void cmbOperacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbOperacionItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbOperacionItemStateChanged
+
+    private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOperacionActionPerformed
         String opcion = cmbOperacion.getSelectedItem().toString();
         txtVoltaje.setText("");
         txtCorriente.setText("");
         txtResistencia.setText("");
-            
+
         txtVoltaje.setEnabled(true);
         txtCorriente.setEnabled(true);
         txtResistencia.setEnabled(true);
-        
-    switch(opcion){ 
-        case "Voltaje":
+
+        switch(opcion){
+            case "Voltaje":
             txtVoltaje.setEnabled(false);
             break;
 
-        case "Corriente":
+            case "Corriente":
             txtCorriente.setEnabled(false);
             break;
 
-        case "Resistencia":
+            case "Resistencia":
             txtResistencia.setEnabled(false);
-            break;      
-    } 
-    }
-
-    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        
-    }//GEN-LAST:event_btnCalcularActionPerformed
+            break;
+        }
+    }//GEN-LAST:event_cmbOperacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,7 +226,6 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbOperacion;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lblCombo;
     private javax.swing.JLabel lblCorriente;
     private javax.swing.JLabel lblResistencia;
