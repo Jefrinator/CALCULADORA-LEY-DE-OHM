@@ -222,7 +222,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
             String opcion = cmbOperacion.getSelectedItem().toString();
             double v, i, r, resultado;
-
+            
             if (opcion.equals("Calcular Voltaje")) {
 
                 i = Double.parseDouble(txtCorriente.getText());
@@ -267,6 +267,9 @@ public class FrmCalculadora extends javax.swing.JFrame {
                     || txtResistencia.getText().trim().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor en los campos correspondientes");
+            }else if(opcion.equals("Seleccione una opcion")){
+                
+                JOptionPane.showMessageDialog(null, "Elegir una opcion para validar para calcular");
             }
 
         } catch (NumberFormatException e) {
