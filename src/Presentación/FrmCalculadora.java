@@ -26,7 +26,14 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
         String opcion = cmbOperacion.getSelectedItem().toString();
 
-        if (opcion.equals("Calcular Voltaje")) {
+         if (opcion.equals("Seleccione una opcion")) {
+
+            txtVoltaje.setEditable(false);
+            txtCorriente.setEditable(false);
+            txtResistencia.setEditable(false);
+           
+
+        }else{if (opcion.equals("Calcular Voltaje")) {
 
             txtVoltaje.setEnabled(false);
             txtVoltaje.setBackground(Color.LIGHT_GRAY);
@@ -43,7 +50,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
             txtResistencia.setEnabled(false);
             txtResistencia.setBackground(Color.LIGHT_GRAY);
             txtVoltaje.requestFocus();
-        }
+        }}
     }
 
     public void cargarCalculos() {
