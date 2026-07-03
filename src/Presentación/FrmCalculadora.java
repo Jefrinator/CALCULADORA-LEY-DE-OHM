@@ -26,26 +26,25 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
         String opcion = cmbOperacion.getSelectedItem().toString();
 
-        
-            if (opcion.equals("Calcular Voltaje")) {
+        if (opcion.equals("Calcular Voltaje")) {
 
-                txtVoltaje.setEnabled(false);
-                txtVoltaje.setBackground(Color.LIGHT_GRAY);
-                txtCorriente.requestFocus();
+            txtVoltaje.setEnabled(false);
+            txtVoltaje.setBackground(Color.LIGHT_GRAY);
+            txtCorriente.requestFocus();
 
-            } else if (opcion.equals("Calcular Corriente")) {
+        } else if (opcion.equals("Calcular Corriente")) {
 
-                txtCorriente.setEnabled(false);
-                txtCorriente.setBackground(Color.LIGHT_GRAY);
-                txtVoltaje.requestFocus();
+            txtCorriente.setEnabled(false);
+            txtCorriente.setBackground(Color.LIGHT_GRAY);
+            txtVoltaje.requestFocus();
 
-            } else if (opcion.equals("Calcular Resistencia")) {
+        } else if (opcion.equals("Calcular Resistencia")) {
 
-                txtResistencia.setEnabled(false);
-                txtResistencia.setBackground(Color.LIGHT_GRAY);
-                txtVoltaje.requestFocus();
-            }
-        
+            txtResistencia.setEnabled(false);
+            txtResistencia.setBackground(Color.LIGHT_GRAY);
+            txtVoltaje.requestFocus();
+        }
+
     }
 
     public void cargarCalculos() {
@@ -325,6 +324,10 @@ public class FrmCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        nuevo();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void nuevo() {
         this.txtVoltaje.setText("");
         this.txtVoltaje.setBackground(Color.WHITE);
         this.txtCorriente.setText("");
@@ -332,7 +335,24 @@ public class FrmCalculadora extends javax.swing.JFrame {
         this.txtResistencia.setText("");
         this.txtResistencia.setBackground(Color.WHITE);
         this.cmbOperacion.setSelectedIndex(0);
-    }//GEN-LAST:event_btnLimpiarActionPerformed
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void restablecerCampos() {
+
+        txtVoltaje.setEnabled(true);
+        txtCorriente.setEnabled(true);
+        txtResistencia.setEnabled(true);
+
+        txtVoltaje.setEditable(true);
+        txtCorriente.setEditable(true);
+        txtResistencia.setEditable(true);
+
+        txtVoltaje.setBackground(Color.WHITE);
+        txtCorriente.setBackground(Color.WHITE);
+        txtResistencia.setBackground(Color.WHITE);
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOperacionActionPerformed
 
@@ -351,7 +371,9 @@ public class FrmCalculadora extends javax.swing.JFrame {
         txtVoltaje.setEnabled(true);
         txtCorriente.setEnabled(true);
         txtResistencia.setEnabled(true);
-
+        //////////////////////////////////////////////////////////////////
+        restablecerCampos();
+        //////////////////////////////////////////////////////////////////
         switch (opcion) {
             case "Calcular Voltaje":
                 txtVoltaje.setEnabled(false);
