@@ -26,31 +26,26 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
         String opcion = cmbOperacion.getSelectedItem().toString();
 
-         if (opcion.equals("Seleccione una opcion")) {
+        
+            if (opcion.equals("Calcular Voltaje")) {
 
-            txtVoltaje.setEditable(false);
-            txtCorriente.setEditable(false);
-            txtResistencia.setEditable(false);
-           
+                txtVoltaje.setEnabled(false);
+                txtVoltaje.setBackground(Color.LIGHT_GRAY);
+                txtCorriente.requestFocus();
 
-        }else{if (opcion.equals("Calcular Voltaje")) {
+            } else if (opcion.equals("Calcular Corriente")) {
 
-            txtVoltaje.setEnabled(false);
-            txtVoltaje.setBackground(Color.LIGHT_GRAY);
-            txtCorriente.requestFocus();
+                txtCorriente.setEnabled(false);
+                txtCorriente.setBackground(Color.LIGHT_GRAY);
+                txtVoltaje.requestFocus();
 
-        } else if (opcion.equals("Calcular Corriente")) {
+            } else if (opcion.equals("Calcular Resistencia")) {
 
-            txtCorriente.setEnabled(false);
-            txtCorriente.setBackground(Color.LIGHT_GRAY);
-            txtVoltaje.requestFocus();
-
-        } else if (opcion.equals("Calcular Resistencia")) {
-
-            txtResistencia.setEnabled(false);
-            txtResistencia.setBackground(Color.LIGHT_GRAY);
-            txtVoltaje.requestFocus();
-        }}
+                txtResistencia.setEnabled(false);
+                txtResistencia.setBackground(Color.LIGHT_GRAY);
+                txtVoltaje.requestFocus();
+            }
+        
     }
 
     public void cargarCalculos() {
@@ -229,7 +224,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
 
             String opcion = cmbOperacion.getSelectedItem().toString();
             double v, i, r, resultado;
-            
+
             if (opcion.equals("Calcular Voltaje")) {
 
                 i = Double.parseDouble(txtCorriente.getText());
@@ -274,8 +269,8 @@ public class FrmCalculadora extends javax.swing.JFrame {
                     || txtResistencia.getText().trim().equals("")) {
 
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor en los campos correspondientes");
-            }else if(opcion.equals("Seleccione una opcion")){
-                
+            } else if (opcion.equals("Seleccione una opcion")) {
+
                 JOptionPane.showMessageDialog(null, "Elegir una opcion para validar para calcular");
             }
 
@@ -340,7 +335,7 @@ public class FrmCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void cmbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOperacionActionPerformed
-        
+
         Object item = cmbOperacion.getSelectedItem(); // Devuelve el elemento que esta seleccionado actulamente en el JComboBox
 
         if (item == null) { //En caso de dar nulo y salte la Exception Null Pointer
